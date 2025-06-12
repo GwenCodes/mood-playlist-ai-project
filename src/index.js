@@ -16,13 +16,13 @@ function generatePoem(event) {
   let apiKey = "61dfa07e8o8462teba3fadad30e70d77"; //step 6; build api url ad api key
   //step 7; make a call to the api url
   let context =
-    "You are an AI assistant that specializes in music. You are a dj that specializes in matching peoples moods with music. Create a list of 5 songs for the users mood with a <br /> before each recommendation. Make sure to follow the user instructions. Do not include the url with your answer. ";
+    "You are an AI assistant that specializes in music. You are a dj that specializes in matching peoples moods with music. Create a list of 5 songs for the users mood with a <br /> before each recommendation. The first song will have a <br />. Make sure to follow the user instructions. Each song title will be <strong>. Do not include the url with your answer. ";
   let prompt = `User instructions: Generate a music playlist about ${instructionsInput.value}`;
   let apiURL = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
 
   let poemElement = document.querySelector("#poem"); //step 8
   poemElement.classList.remove("hidden"); // step 9
-  poemElement.innerHTML = `<div class="generating">⏳ Generating a playlist about ${instructionsInput.value}</div>`; //step 10; added blinking animation
+  poemElement.innerHTML = `<div class="generating"> One moment. Creating a playlist to match your ${instructionsInput.value} mood</div>`; //step 10; added blinking animation
 
   axios.get(apiURL).then(displayPoem);
 }
